@@ -1,0 +1,32 @@
+name: Build and Release
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup MinGW GCC
+      uses: egor-tensin/setup-mingw@v2
+      with:
+        platform: x64
+
+    - name: Compile Standalone Binary
+      run: |
+        g++ -O2 -s -mwindows -municode main.cpp -o activate-windows.exe -lgdiplus -lgdi32 -luser32 -lshell32 -lcomctl32 -lole32
+
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: activate-windows-win-x64
+        path: activate-windows.exe

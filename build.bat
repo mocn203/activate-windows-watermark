@@ -2,7 +2,7 @@
 setlocal
 cd /d "%~dp0"
 
-echo [1/2] Compiling Activate Windows Watermark Prank Tool...
+echo [1/2] Compiling Activate Windows Watermark Overlay...
 where g++ >nul 2>nul
 if %ERRORLEVEL% neq 0 (
     echo [ERROR] g++ compiler not found in PATH!
@@ -14,10 +14,10 @@ if %ERRORLEVEL% neq 0 (
 g++ -O2 -s -mwindows -municode main.cpp -o activate-windows.exe -lgdiplus -lgdi32 -luser32 -lshell32 -lcomctl32 -lole32
 
 if %ERRORLEVEL% equ 0 (
-    echo [2/2] Build SUCCESS! Output: activate-windows.exe
+    echo [2/2] Build successful: activate-windows.exe
     dir activate-windows.exe | findstr /i "activate-windows.exe"
 ) else (
-    echo [ERROR] Compilation failed!
+    echo [ERROR] Build failed!
     pause
     exit /b 1
 )

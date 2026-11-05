@@ -413,7 +413,7 @@ void ShowContextMenu(HWND hwnd) {
     HMENU hMenuMonitors = CreatePopupMenu();
 
     // Bold title header
-    AppendMenuW(hMenu, MF_STRING | MF_DISABLED, IDM_TITLE_HEADER, L"Activate Windows (Prank Tool)");
+    AppendMenuW(hMenu, MF_STRING | MF_DISABLED, IDM_TITLE_HEADER, L"Activate Windows Watermark");
     AppendMenuW(hMenu, MF_SEPARATOR, 0, NULL);
 
     // Toggle watermark visibility
@@ -423,21 +423,21 @@ void ShowContextMenu(HWND hwnd) {
 
     // Presets Submenu
     AppendMenuW(hMenuPresets, (g_currentPreset == 0 ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
-                IDM_PRESET_DEFAULT, L"1. Activate Windows (Default)");
+                IDM_PRESET_DEFAULT, L"1. Activate Windows (Standard)");
     AppendMenuW(hMenuPresets, (g_currentPreset == 1 ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
                 IDM_PRESET_EVALUATION, L"2. Windows 11 Enterprise (Evaluation Copy)");
     AppendMenuW(hMenuPresets, (g_currentPreset == 2 ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
-                IDM_PRESET_COPILOT, L"3. Activate Copilot ($30/mo Needed)");
+                IDM_PRESET_COPILOT, L"3. Activate Copilot (Subscription Needed)");
     AppendMenuW(hMenuPresets, (g_currentPreset == 3 ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
                 IDM_PRESET_LINUX, L"4. Activate Linux (Arch btw)");
     AppendMenuW(hMenuPresets, (g_currentPreset == 4 ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
                 IDM_PRESET_GRASS, L"5. Touch Grass (Activate Real Life)");
     AppendMenuW(hMenuPresets, (g_currentPreset == 5 ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
-                IDM_PRESET_VIETNAMESE, L"6. K\u00edch ho\u1ea1t Windows (Ti\u1ebfng Vi\u1ec7t)");
+                IDM_PRESET_VIETNAMESE, L"6. K\u00edch ho\u1ea1t Windows (Vietnamese)");
     AppendMenuW(hMenuPresets, MF_SEPARATOR, 0, NULL);
     AppendMenuW(hMenuPresets, (g_currentPreset == 6 ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
                 IDM_PRESET_CUSTOM, L"7. Custom Text...");
-    AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hMenuPresets, L"🎭 Watermark &Presets");
+    AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hMenuPresets, L"Watermark &Presets");
 
     // Opacity Submenu
     AppendMenuW(hMenuOpacity, (g_opacityFactor == 0.30f ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
@@ -450,7 +450,7 @@ void ShowContextMenu(HWND hwnd) {
                 IDM_OPACITY_80, L"80% (Clear)");
     AppendMenuW(hMenuOpacity, (g_opacityFactor == 1.00f ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
                 IDM_OPACITY_100, L"100% (Solid White)");
-    AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hMenuOpacity, L"🔆 &Opacity");
+    AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hMenuOpacity, L"&Opacity");
 
     // Position Submenu
     AppendMenuW(hMenuPosition, (g_posMode == POS_BOTTOM_RIGHT ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
@@ -461,17 +461,17 @@ void ShowContextMenu(HWND hwnd) {
                 IDM_POS_TOP_RIGHT, L"Top-Right");
     AppendMenuW(hMenuPosition, (g_posMode == POS_TOP_LEFT ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
                 IDM_POS_TOP_LEFT, L"Top-Left");
-    AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hMenuPosition, L"📍 &Position");
+    AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hMenuPosition, L"&Position");
 
     // Monitor Submenu
     AppendMenuW(hMenuMonitors, (!g_allMonitors ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
                 IDM_MONITOR_PRIMARY, L"Primary Monitor Only");
     AppendMenuW(hMenuMonitors, (g_allMonitors ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, 
                 IDM_MONITOR_ALL, L"All Connected Monitors");
-    AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hMenuMonitors, L"🖥️ &Displays");
+    AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hMenuMonitors, L"&Displays");
 
     AppendMenuW(hMenu, MF_SEPARATOR, 0, NULL);
-    AppendMenuW(hMenu, MF_STRING, IDM_EXIT, L"❌ &Exit");
+    AppendMenuW(hMenu, MF_STRING, IDM_EXIT, L"E&xit");
 
     // Make header menu item bold
     MENUITEMINFOW mii = { sizeof(mii) };
